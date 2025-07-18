@@ -1,14 +1,14 @@
 /* Fondo general y tipografía */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff9fb; /* fondo cálido */
+  background-color: #fff9fb;
   color: #3e3e3e;
   margin: 0;
   padding: 2rem;
   text-align: center;
 }
 
-/* Título principal */
+/* Títulos */
 h1 {
   font-size: 2.5rem;
   color: #a24b72;
@@ -16,7 +16,6 @@ h1 {
   letter-spacing: 0.5px;
 }
 
-/* Subtítulo */
 h2 {
   font-size: 1.2rem;
   font-weight: normal;
@@ -25,12 +24,11 @@ h2 {
   opacity: 0.9;
 }
 
-/* Contenedor por ciclo */
+/* Contenedor de ciclo */
 .ciclo {
   margin-bottom: 3.5rem;
 }
 
-/* Título de cada ciclo */
 .ciclo h3 {
   font-size: 1.4rem;
   color: #974b90;
@@ -38,7 +36,6 @@ h2 {
   position: relative;
 }
 
-/* Línea decorativa bajo el nombre del ciclo */
 .ciclo h3::after {
   content: "";
   display: block;
@@ -58,7 +55,7 @@ h2 {
   padding: 0 10px;
 }
 
-/* Tarjeta de materia disponible */
+/* Tarjeta de materia */
 .materia {
   background-color: #fcd7e5;
   border: 2px solid #f4a8c2;
@@ -70,12 +67,22 @@ h2 {
   transition: all 0.25s ease;
   font-weight: bold;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .materia:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
   background-color: #f9bdd3;
+}
+
+/* Icono */
+.materia i {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #a24b72;
 }
 
 /* Créditos */
@@ -97,9 +104,52 @@ h2 {
   opacity: 0.8;
 }
 
+.materia.locked i {
+  color: #d4a8b9;
+}
+
 /* Materia completada */
 .materia.completed {
   background-color: #f8a7c2;
   border-color: #e07ea7;
   color: #6c2a48;
+}
+
+.materia.completed i {
+  color: #6c2a48;
+}
+
+/* Barra de avance */
+.barra-avance {
+  max-width: 450px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.barra-avance label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.progreso {
+  background-color: #fef1f5;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto 8px auto;
+}
+
+.progreso-interno {
+  background-color: #f8a7c2;
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 8px;
+}
+
+#porcentaje {
+  font-size: 0.9rem;
+  color: #a24b72;
+  font-weight: 500;
 }
