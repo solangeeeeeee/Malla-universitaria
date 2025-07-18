@@ -43,45 +43,41 @@ h1 {
 .materias {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .materia {
-  background-color: #fbe4ee;
-  border: 2px solid #f3cde2;
-  border-radius: 10px;
+  background-color: #fbe4f0;
+  border: 1px solid #e8c6db;
   padding: 10px;
-  width: 180px;
-  min-height: 90px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  width: 230px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  gap: 0.5rem;
   align-items: center;
-  text-align: center;
-  transition: 0.3s ease;
-}
-
-.materia i {
-  font-size: 20px;
-  color: #d68eb4;
-  margin-bottom: 5px;
 }
 
 .materia.locked {
-  background-color: #fdf6f9;
-  color: #ccc;
-  cursor: not-allowed;
-  opacity: 0.6;
+  background-color: #ede7f6;
+  color: #aaa;
+  pointer-events: none;
+  border-style: dashed;
 }
 
 .materia.completed {
-  background-color: #F4A4C6 !important;  /* rosa más fuerte */
-  background-color: #fad5e0 !important;
+  background-color: #f4a4c6 !important;
 }
 
-.materia.completed .nombre {
-  background-color: #F4A4C6 !important;  /* rosa más fuerte */
+.materia.completed span {
   text-decoration: line-through;
-  opacity: 0.6;
+  text-decoration-thickness: 2px;
+  opacity: 1;
+}
+
+.materia i {
+  color: #b28cb6;
 }
