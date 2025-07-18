@@ -1,5 +1,4 @@
 const materias = [
-  // Ciclo 1
   { nombre: "Taller de Expresion Corporal", ciclo: 1, desbloquea: ["Taller Presentaciones Efectivas"] },
   { nombre: "Matemática", ciclo: 1, desbloquea: ["Estadística General"] },
   { nombre: "Lengua y comunicación", ciclo: 1, desbloquea: [] },
@@ -8,7 +7,6 @@ const materias = [
   { nombre: "Desempeño universitario", ciclo: 1, desbloquea: ["Ciencias Sociales"] },
   { nombre: "Biología", ciclo: 1, desbloquea: ["Morfo fisiología del Sistema Nervioso", "Educación Ambiental"] },
 
-  // Ciclo 2
   { nombre: "Taller Presentaciones Efectivas", ciclo: 2, desbloquea: ["Taller de Desarrollo Personal 1"] },
   { nombre: "Morfo fisiología del Sistema Nervioso", ciclo: 2, desbloquea: ["Psicobiologia"] },
   { nombre: "Lógica", ciclo: 2, desbloquea: [] },
@@ -17,25 +15,24 @@ const materias = [
   { nombre: "Educación Ambiental", ciclo: 2, desbloquea: [] },
   { nombre: "Ciencias Sociales", ciclo: 2, desbloquea: [] },
 
-  // Ciclo 3
   { nombre: "Taller de Desarrollo Personal 1", ciclo: 3, desbloquea: ["Taller de Desarrollo Personal 2"] },
   { nombre: "Realidad Nacional", ciclo: 3, desbloquea: ["Psicologia social"] },
   { nombre: "Psicologia de la Personalidad", ciclo: 3, desbloquea: ["Psicoanalisis", "Psicopatologia 1"] },
   { nombre: "Psicobiologia", ciclo: 3, desbloquea: ["Procesos afectivos-emocionales", "Motivación y emoción"] },
   { nombre: "Procesos Cognitivos", ciclo: 3, desbloquea: [] },
-  { nombre: "Inglés", ciclo: 3, desbloquea: [] },
+  { nombre: "Ingles", ciclo: 3, desbloquea: [] },
   { nombre: "Estadística aplicada a la psicologia", ciclo: 3, desbloquea: ["Psicometría"] },
-  { nombre: "Desarrollo Psicologico 1", ciclo: 3, desbloquea: ["Desarrollo Psicologico 2"] },
-
-  // Ciclo 4
+  { nombre: "Desarrollo Psicologico 1", ciclo: 3, desbloquea: ["Desarrollo psicologico 2"] },
+];
+materias.push(
   { nombre: "Taller de Desarrollo Personal 2", ciclo: 4, desbloquea: [] },
   { nombre: "Psicometría", ciclo: 4, desbloquea: ["Pruebas psicologicas 1", "Metodología de la investigación para psicología"] },
   { nombre: "Psicologia social", ciclo: 4, desbloquea: ["Psicologia de las organizaciones", "Dinamica y abordaje de grupos"] },
   { nombre: "Psicoanalisis", ciclo: 4, desbloquea: ["Modelo psicoterapeutico humanista"] },
   { nombre: "Procesos afectivos-emocionales", ciclo: 4, desbloquea: [] },
   { nombre: "Motivación y emoción", ciclo: 4, desbloquea: ["Psicopatologia 1", "Psicologia del aprendizaje"] },
-  { nombre: "Desarrollo Psicologico 2", ciclo: 4, desbloquea: ["Entrevista y observación psicologica"] }
-  
+  { nombre: "Desarrollo psicologico 2", ciclo: 4, desbloquea: ["Entrevista y observación psicologica"] },
+
   { nombre: "Psicopatologia 1", ciclo: 5, desbloquea: ["Psicopatologia 2"] },
   { nombre: "Psicologia del aprendizaje", ciclo: 5, desbloquea: ["Psicologia educativa"] },
   { nombre: "Psicologia de las organizaciones", ciclo: 5, desbloquea: ["Comportamiento y cultura organizacional"] },
@@ -45,7 +42,7 @@ const materias = [
 
   { nombre: "Psicopatologia 2", ciclo: 6, desbloquea: ["Neuropsicología"] },
   { nombre: "Psicologia de la sexualidad", ciclo: 6, desbloquea: ["Psicologia positiva"] },
-  { nombre: "Psicología educativa", ciclo: 6, desbloquea: [] },
+  { nombre: "Psicologia educativa", ciclo: 6, desbloquea: [] },
   { nombre: "Pruebas Psicologicas 2", ciclo: 6, desbloquea: ["Evaluación y diagnóstico psicológico"] },
   { nombre: "Dinamica y abordaje de grupos", ciclo: 6, desbloquea: ["Psicología comunitaria y ambiental"] },
   { nombre: "Consejo psicologico", ciclo: 6, desbloquea: ["Modelo Psicoterapéutico cognitivo - conductual"] },
@@ -71,112 +68,45 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, desbloquea: [] }
 );
 
-function guardarEstado() {
-  localStorage.setItem("materiasCompletadas", JSON.stringify(materiasCompletadas));
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("malla-container");
 
-function cargarEstado() {
-  const estadoGuardado = localStorage.getItem("materiasCompletadas");
-  if (estadoGuardado) {
-    materiasCompletadas = JSON.parse(estadoGuardado);
-  }
-}
-
-let materiasCompletadas = [];
-
-function crearTarjetaMateria(materia) {
-  const div = document.createElement("div");
-  div.className = "materia";
-  div.innerHTML = `<i class="fas fa-brain"></i><span class="nombre">${materia.nombre}</span>`;
-  div.dataset.nombre = materia.nombre;
-
-  if (!estaDesbloqueada(materia)) {
-    div.classList.add("locked");
-  } else {
-    div.addEventListener("click", () => {
-      div.classList.toggle("completed");
-      const span = div.querySelector("span");
-      const nombre = materia.nombre;
-
-      if (materiasCompletadas.includes(nombre)) {
-        materiasCompletadas = materiasCompletadas.filter(m => m !== nombre);
-      } else {
-        materiasCompletadas.push(nombre);
-      }
-
-      actualizarEstilos(div, span, nombre);
-      guardarEstado();
-      actualizarDesbloqueo();
-      actualizarProgreso();
-    });
-  }
-
-  if (materiasCompletadas.includes(materia.nombre)) {
-    div.classList.add("completed");
-    div.querySelector("span").style.textDecoration = "line-through";
-    div.querySelector("span").style.opacity = "0.6";
-  }
-
-  return div;
-}
-
-function estaDesbloqueada(materia) {
-  if (materia.ciclo === 1) return true;
-  for (const m of materias) {
-    if (m.desbloquea.includes(materia.nombre)) {
-      if (!materiasCompletadas.includes(m.nombre)) return false;
-    }
-  }
-  return true;
-}
-
-function actualizarEstilos(div, span, nombre) {
-  if (materiasCompletadas.includes(nombre)) {
-    div.classList.add("completed");
-    span.style.textDecoration = "line-through";
-    span.style.opacity = "0.6";
-  } else {
-    div.classList.remove("completed");
-    span.style.textDecoration = "none";
-    span.style.opacity = "1";
-  }
-}
-
-function actualizarDesbloqueo() {
-  const contenedor = document.getElementById("malla-container");
-  contenedor.innerHTML = "";
-
-  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))].sort((a, b) => a - b);
+  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))];
+  ciclosUnicos.sort((a, b) => a - b);
 
   ciclosUnicos.forEach(ciclo => {
-    const cicloDiv = document.createElement("div");
-    cicloDiv.className = "ciclo";
-    cicloDiv.innerHTML = `<h3>Ciclo ${ciclo}</h3>`;
+    const seccion = document.createElement("div");
+    seccion.className = "ciclo";
 
-    const materiasCiclo = materias.filter(m => m.ciclo === ciclo);
-    const materiasContainer = document.createElement("div");
-    materiasContainer.className = "materias";
+    const titulo = document.createElement("h3");
+    titulo.textContent = `Ciclo ${ciclo}`;
+    seccion.appendChild(titulo);
 
-    materiasCiclo.forEach(materia => {
-      const tarjeta = crearTarjetaMateria(materia);
-      materiasContainer.appendChild(tarjeta);
+    const grupo = document.createElement("div");
+    grupo.className = "materias";
+
+    materias.filter(m => m.ciclo === ciclo).forEach(materia => {
+      const div = document.createElement("div");
+      div.className = "materia locked";
+      div.setAttribute("data-nombre", materia.nombre);
+
+      const icono = document.createElement("i");
+      icono.className = "fas fa-brain";
+      div.appendChild(icono);
+
+      const nombreSpan = document.createElement("span");
+      nombreSpan.className = "nombre";
+      nombreSpan.textContent = materia.nombre;
+      div.appendChild(nombreSpan);
+
+      div.addEventListener("click", () => toggleMateria(div));
+      grupo.appendChild(div);
     });
 
-    cicloDiv.appendChild(materiasContainer);
-    contenedor.appendChild(cicloDiv);
+    seccion.appendChild(grupo);
+    container.appendChild(seccion);
   });
-}
 
-function actualizarProgreso() {
-  const total = materias.length;
-  const completadas = materiasCompletadas.length;
-  const porcentaje = Math.floor((completadas / total) * 100);
-  document.getElementById("progreso-interno").style.width = `${porcentaje}%`;
-  document.getElementById("porcentaje").innerText = `${porcentaje}%`;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  cargarEstado();
   actualizarDesbloqueo();
   actualizarProgreso();
 });
