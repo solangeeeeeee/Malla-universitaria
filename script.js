@@ -77,8 +77,6 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] },
 ];
 
-const materias = [/* ... aquí va toda tu lista de materias como antes ... */];
-
 // Objeto para guardar el estado de materias
 const estado = {};
 
