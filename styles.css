@@ -100,7 +100,7 @@ body {
 }
 
 .materia.completed {
-  background-color: #fad5e0;
+  background-color: #fad5e0 !important;
 }
 
 .materia.completed .nombre {
