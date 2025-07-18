@@ -1,70 +1,95 @@
+/* Fondo general y tipografía */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff9fb;
-  color: #2f2f2f;
+  background-color: #fff9fb; /* fondo cálido */
+  color: #3e3e3e;
   margin: 0;
   padding: 2rem;
   text-align: center;
 }
 
+/* Título principal */
 h1 {
   font-size: 2.5rem;
   color: #a24b72;
   margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
 }
 
+/* Subtítulo */
 h2 {
   font-size: 1.2rem;
   font-weight: normal;
   color: #6b4b6d;
   margin-bottom: 2.5rem;
+  opacity: 0.9;
 }
 
+/* Contenedor por ciclo */
 .ciclo {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
+/* Título de cada ciclo */
 .ciclo h3 {
   font-size: 1.4rem;
   color: #974b90;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
 }
 
+/* Línea decorativa bajo el nombre del ciclo */
+.ciclo h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #f8a7c2;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Contenedor de materias */
 .materias {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 18px;
   padding: 0 10px;
 }
 
+/* Tarjeta de materia disponible */
 .materia {
-  background-color: #fcd7e5; /* rosado claro (disponible) */
+  background-color: #fcd7e5;
   border: 2px solid #f4a8c2;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1rem;
   width: 180px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   font-weight: bold;
+  position: relative;
 }
 
 .materia:hover {
-  transform: scale(1.03);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
   background-color: #f9bdd3;
 }
 
+/* Créditos */
 .materia small {
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   font-size: 0.85rem;
   font-weight: normal;
-  color: #444;
+  color: #555;
 }
 
+/* Materia bloqueada */
 .materia.locked {
-  background-color: #fef1f5; /* rosado muy clarito */
+  background-color: #fef1f5;
   border-color: #f4c8d9;
   color: #aaa;
   cursor: default;
@@ -72,8 +97,9 @@ h2 {
   opacity: 0.8;
 }
 
+/* Materia completada */
 .materia.completed {
-  background-color: #f8a7c2; /* rosado más fuerte (completado) */
+  background-color: #f8a7c2;
   border-color: #e07ea7;
   color: #6c2a48;
 }
