@@ -65,18 +65,15 @@ const materias = [
 
   { nombre: "Trabajo de investigación", ciclo: 10, desbloquea: [] },
   { nombre: "Internado 2", ciclo: 10, desbloquea: [] }
-);
+];
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("malla-container");
-
-  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))];
-  ciclosUnicos.sort((a, b) => a - b);
+  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))].sort((a, b) => a - b);
 
   ciclosUnicos.forEach(ciclo => {
     const seccion = document.createElement("div");
     seccion.className = "ciclo";
-
     const titulo = document.createElement("h3");
     titulo.textContent = `Ciclo ${ciclo}`;
     seccion.appendChild(titulo);
@@ -109,3 +106,38 @@ document.addEventListener("DOMContentLoaded", () => {
   actualizarDesbloqueo();
   actualizarProgreso();
 });
+
+function toggleMateria(div) {
+  if (div.classList.contains("locked")) return;
+
+  div.classList.toggle("completed");
+  actualizarDesbloqueo();
+  actualizarProgreso();
+}
+
+function actualizarDesbloqueo() {
+  const completadas = [...document.querySelectorAll(".materia.completed")]
+    .map(d => d.getAttribute("data-nombre"));
+
+  document.querySelectorAll(".materia").forEach(div => {
+    const nombre = div.getAttribute("data-nombre");
+    const materia = materias.find(m => m.nombre === nombre);
+    const requisitos = materias.filter(m => m.desbloquea.includes(nombre));
+    const desbloqueada = requisitos.every(req => completadas.includes(req.nombre));
+
+    div.classList.toggle("locked", !desbloqueada && !completadas.includes(nombre));
+  });
+
+  document.querySelectorAll(".materia.completed .nombre").forEach(span => {
+    span.style.textDecoration = "line-through";
+    span.style.opacity = "1";
+  });
+}
+
+function actualizarProgreso() {
+  const total = document.querySelectorAll(".materia").length;
+  const completadas = document.querySelectorAll(".materia.completed").length;
+  const porcentaje = Math.round((completadas / total) * 100);
+  document.getElementById("progreso-interno").style.width = `${porcentaje}%`;
+  document.getElementById("porcentaje").textContent = `${porcentaje}%`;
+}
