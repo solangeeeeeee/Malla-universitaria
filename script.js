@@ -1,18 +1,18 @@
 const materias = [
   // Ciclo 1
-  { nombre: "Taller de Expresión Corporal", ciclo: 1, creditos: 2, desbloquea: ["Taller Presentaciones Efectivas"] },
+  { nombre: "Taller de Expresion Corporal", ciclo: 1, creditos: 2, desbloquea: ["Taller Presentaciones Efectivas"] },
   { nombre: "Matemática", ciclo: 1, creditos: 3, desbloquea: ["Estadística General"] },
-  { nombre: "Lengua y Comunicación", ciclo: 1, creditos: 3, desbloquea: [] },
-  { nombre: "Introducción a la Psicología", ciclo: 1, creditos: 3, desbloquea: ["Historia y Sistemas Psicológicos"] },
+  { nombre: "Lengua y comunicación", ciclo: 1, creditos: 3, desbloquea: [] },
+  { nombre: "Introducción a la psicología", ciclo: 1, creditos: 3, desbloquea: ["Historia y sistemas Psicologicos"] },
   { nombre: "Filosofía", ciclo: 1, creditos: 3, desbloquea: ["Lógica"] },
-  { nombre: "Desempeño Universitario", ciclo: 1, creditos: 2, desbloquea: ["Ciencias Sociales"] },
-  { nombre: "Biología", ciclo: 1, creditos: 4, desbloquea: ["Morfofisiología del Sistema Nervioso", "Educación Ambiental"] },
+  { nombre: "Desempeño universitario", ciclo: 1, creditos: 2, desbloquea: ["Ciencias Sociales"] },
+  { nombre: "Biología", ciclo: 1, creditos: 4, desbloquea: ["Morfo fisiología del Sistema Nervioso", "Educación Ambiental"] },
 
   // Ciclo 2
   { nombre: "Taller Presentaciones Efectivas", ciclo: 2, creditos: 1, desbloquea: ["Taller de Desarrollo Personal 1"] },
-  { nombre: "Morfofisiología del Sistema Nervioso", ciclo: 2, creditos: 4, desbloquea: ["Psicobiología"] },
+  { nombre: "Morfo fisiología del Sistema Nervioso", ciclo: 2, creditos: 4, desbloquea: ["Psicobiología"] },
   { nombre: "Lógica", ciclo: 2, creditos: 3, desbloquea: [] },
-  { nombre: "Historia y Sistemas Psicológicos", ciclo: 2, creditos: 3, desbloquea: ["Psicología de la Personalidad", "Procesos Cognitivos", "Desarrollo Psicológico 1"] },
+  { nombre: "Historia y sistemas Psicologicos", ciclo: 2, creditos: 3, desbloquea: ["Psicología de la Personalidad", "Procesos Cognitivos", "Desarrollo Psicológico 1"] },
   { nombre: "Estadística General", ciclo: 2, creditos: 4, desbloquea: ["Estadística Aplicada a la Psicología"] },
   { nombre: "Educación Ambiental", ciclo: 2, creditos: 2, desbloquea: [] },
   { nombre: "Ciencias Sociales", ciclo: 2, creditos: 3, desbloquea: [] },
@@ -21,7 +21,7 @@ const materias = [
   { nombre: "Taller de Desarrollo Personal 1", ciclo: 3, creditos: 1, desbloquea: ["Taller de Desarrollo Personal 2"] },
   { nombre: "Realidad Nacional", ciclo: 3, creditos: 3, desbloquea: ["Psicología Social"] },
   { nombre: "Psicología de la Personalidad", ciclo: 3, creditos: 3, desbloquea: ["Psicoanálisis", "Psicopatología 1"] },
-  { nombre: "Psicobiología", ciclo: 3, creditos: 3, desbloquea: ["Procesos Afectivo-Emocionales", "Motivación y Emoción"] },
+  { nombre: "Psicobiología", ciclo: 3, creditos: 3, desbloquea: ["Procesos afectivos-emocionales", "Motivación y emoción"] },
   { nombre: "Procesos Cognitivos", ciclo: 3, creditos: 3, desbloquea: [] },
   { nombre: "Inglés", ciclo: 3, creditos: 2, desbloquea: [] },
   { nombre: "Estadística Aplicada a la Psicología", ciclo: 3, creditos: 3, desbloquea: ["Psicometría"] },
@@ -32,8 +32,8 @@ const materias = [
   { nombre: "Psicometría", ciclo: 4, creditos: 4, desbloquea: ["Pruebas Psicológicas 1", "Metodología de la Investigación para Psicología"] },
   { nombre: "Psicología Social", ciclo: 4, creditos: 3, desbloquea: ["Psicología de las Organizaciones", "Dinámica y Abordaje de Grupos"] },
   { nombre: "Psicoanálisis", ciclo: 4, creditos: 3, desbloquea: ["Modelo Psicoterapéutico Humanista"] },
-  { nombre: "Procesos Afectivo-Emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
-  { nombre: "Motivación y Emoción", ciclo: 4, creditos: 3, desbloquea: ["Psicopatología 1", "Psicología del Aprendizaje"] },
+  { nombre: "Procesos afectivos-emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
+  { nombre: "Motivación y emoción", ciclo: 4, creditos: 3, desbloquea: ["Psicopatología 1", "Psicología del Aprendizaje"] },
   { nombre: "Desarrollo Psicológico 2", ciclo: 4, creditos: 3, desbloquea: ["Entrevista y Observación Psicológica"] },
 
   // Ciclo 5
@@ -57,16 +57,16 @@ const materias = [
   { nombre: "Psicología Comunitaria y Ambiental", ciclo: 7, creditos: 3, desbloquea: ["Programa de Internado Aplicado a Psicología"] },
   { nombre: "Neuropsicología", ciclo: 7, creditos: 4, desbloquea: [] },
   { nombre: "Modelo Psicoterapéutico Cognitivo - Conductual", ciclo: 7, creditos: 3, desbloquea: [] },
-  { nombre: "Evaluación y Diagnóstico Psicológico", ciclo: 7, creditos: 3, desbloquea: ["Orientación Vocacional y Profesional", "Modelo Psicoterapéutico Familiar Sistémico", "Integridad y Ética Profesional"] },
+  { nombre: "Evaluación y Diagnóstico Psicológico", ciclo: 7, creditos: 3, desbloquea: ["Orientación Vocacional y Profesional", "Modelo Psicoterapéutico Familiar Sistem", "Integrity and Professional Ethical"] },
   { nombre: "Comportamiento y Cultura Organizacional", ciclo: 7, creditos: 3, desbloquea: [] },
 
   // Ciclo 8
   { nombre: "Psicología Clínica y de la Salud", ciclo: 8, creditos: 4, desbloquea: [] },
   { nombre: "Programa de Internado Aplicado a Psicología", ciclo: 8, creditos: 4, desbloquea: [] },
   { nombre: "Orientación Vocacional y Profesional", ciclo: 8, creditos: 2, desbloquea: [] },
-  { nombre: "Modelo Psicoterapéutico Familiar Sistémico", ciclo: 8, creditos: 3, desbloquea: [] },
+  { nombre: "Modelo Psicoterapéutico Familiar Sistem", ciclo: 8, creditos: 3, desbloquea: [] },
   { nombre: "Metodología de la Investigación para Psicología", ciclo: 8, creditos: 3, desbloquea: ["Seminario de Tesis"] },
-  { nombre: "Integridad y Ética Profesional", ciclo: 8, creditos: 3, desbloquea: ["Internado 1"] },
+  { nombre: "Integrity and Professional Ethical", ciclo: 8, creditos: 3, desbloquea: ["Internado 1"] },
 
   // Ciclo 9
   { nombre: "Seminario de Tesis", ciclo: 9, creditos: 3, desbloquea: ["Trabajo de Investigación"] },
@@ -77,90 +77,58 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] }
 ];
 
-// Iconos por palabra clave
-const iconos = [
-  { palabra: "Psicología", icono: "fa-brain" },
-  { palabra: "Neuro", icono: "fa-brain" },
-  { palabra: "Aprendizaje", icono: "fa-lightbulb" },
-  { palabra: "Emoción", icono: "fa-heart" },
-  { palabra: "Salud", icono: "fa-heart-pulse" },
-  { palabra: "Estadística", icono: "fa-chart-bar" },
-  { palabra: "Desarrollo", icono: "fa-user" },
-  { palabra: "Sexualidad", icono: "fa-heart" },
-  { palabra: "Internado", icono: "fa-graduation-cap" },
-  { palabra: "Investigación", icono: "fa-book-open" },
-  { palabra: "Taller", icono: "fa-people-arrows" },
-  { palabra: "Entrevista", icono: "fa-comments" },
-  { palabra: "Consejo", icono: "fa-hands-helping" },
-  { palabra: "Organizaciones", icono: "fa-building" },
-  { palabra: "Metodología", icono: "fa-book" }
-];
-
 const estado = {};
 
-function getIcono(nombre) {
-  for (const i of iconos) {
-    if (nombre.toLowerCase().includes(i.palabra.toLowerCase())) return i.icono;
+function crearMateria(m) {
+  const div = document.createElement("div");
+  div.className = "materia";
+  div.innerHTML = `<i class="fas fa-brain"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
+  if (!estaDesbloqueada(m)) {
+    div.classList.add("locked");
+  } else {
+    div.addEventListener("click", () => {
+      div.classList.toggle("completed");
+      estado[m.nombre] = div.classList.contains("completed") ? "completado" : null;
+      actualizarDesbloqueo();
+    });
   }
-  return "fa-book";
+  return div;
 }
 
 function estaDesbloqueada(materia) {
   const prerrequisitos = materias.filter(m => m.desbloquea.includes(materia.nombre));
   if (prerrequisitos.length === 0) {
-    return materia.ciclo === 1;
+    return materia.ciclo <= 3;
   }
   return prerrequisitos.every(m => estado[m.nombre] === "completado");
 }
 
-function renderMalla() {
+function actualizarDesbloqueo() {
   const container = document.getElementById("malla-container");
   container.innerHTML = "";
-  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))];
-  ciclosUnicos.forEach(ciclo => {
-    const divCiclo = document.createElement("div");
-    divCiclo.className = "ciclo";
-    divCiclo.innerHTML = `<h3>Ciclo ${ciclo}</h3>`;
-    const divMaterias = document.createElement("div");
-    divMaterias.className = "materias";
+  const ciclos = [...new Set(materias.map(m => m.ciclo))];
+  let completadas = 0;
 
-    materias
-      .filter(m => m.ciclo === ciclo)
-      .forEach(m => {
-        const materiaDiv = document.createElement("div");
-        materiaDiv.className = "materia";
-        const desbloqueada = estaDesbloqueada(m);
+  ciclos.forEach(c => {
+    const bloque = document.createElement("div");
+    bloque.className = "ciclo";
+    bloque.innerHTML = `<h3>Ciclo ${c}</h3>`;
+    const grupo = document.createElement("div");
+    grupo.className = "materias";
 
-        if (!desbloqueada) {
-          materiaDiv.classList.add("locked");
-        } else if (estado[m.nombre] === "completado") {
-          materiaDiv.classList.add("completed");
-        }
+    materias.filter(m => m.ciclo === c).forEach(m => {
+      const div = crearMateria(m);
+      if (estado[m.nombre] === "completado") completadas++;
+      grupo.appendChild(div);
+    });
 
-        const iconClass = getIcono(m.nombre);
-        materiaDiv.innerHTML = `<i class="fas ${iconClass}"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
-        materiaDiv.onclick = () => {
-          if (!materiaDiv.classList.contains("locked")) {
-            estado[m.nombre] = estado[m.nombre] === "completado" ? null : "completado";
-            renderMalla();
-          }
-        };
-        divMaterias.appendChild(materiaDiv);
-      });
-
-    divCiclo.appendChild(divMaterias);
-    container.appendChild(divCiclo);
+    bloque.appendChild(grupo);
+    container.appendChild(bloque);
   });
 
-  actualizarBarra();
+  const porcentaje = Math.round((completadas / materias.length) * 100);
+  document.getElementById("progreso-interno").style.width = porcentaje + "%";
+  document.getElementById("porcentaje").innerText = porcentaje + "%";
 }
 
-function actualizarBarra() {
-  const total = materias.filter(m => estaDesbloqueada(m)).length;
-  const completadas = materias.filter(m => estado[m.nombre] === "completado").length;
-  const porcentaje = total > 0 ? Math.round((completadas / total) * 100) : 0;
-  document.getElementById("progreso-interno").style.width = `${porcentaje}%`;
-  document.getElementById("porcentaje").innerText = `${porcentaje}%`;
-}
-
-renderMalla();
+document.addEventListener("DOMContentLoaded", actualizarDesbloqueo);
