@@ -1,4 +1,4 @@
-// Datos de la malla con ciclos, créditos y desbloqueos
+// Lista de materias con ciclo, créditos y desbloqueos
 const materias = [
   // Ciclo 1
   { nombre: "Taller de Expresión Corporal", ciclo: 1, creditos: 2, desbloquea: ["Taller Presentaciones Efectivas"] },
@@ -36,7 +36,7 @@ const materias = [
   { nombre: "Procesos Afectivos-Emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
   { nombre: "Motivación y Emoción", ciclo: 4, creditos: 3, desbloquea: ["Psicopatología 1", "Psicología del Aprendizaje"] },
   { nombre: "Desarrollo Psicológico 2", ciclo: 4, creditos: 3, desbloquea: ["Entrevista y Observación Psicológica"] },
-  
+
   // Ciclo 5
   { nombre: "Psicopatología 1", ciclo: 5, creditos: 4, desbloquea: ["Psicopatología 2"] },
   { nombre: "Psicología del Aprendizaje", ciclo: 5, creditos: 3, desbloquea: ["Psicología Educativa"] },
@@ -78,19 +78,16 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] }
 ];
 
-// Estado guardado
-let estado = JSON.parse(localStorage.getItem("estadoCursos")) || {};
+let estado = JSON.parse(localStorage.getItem("estadoMaterias")) || {};
 
 function guardarEstado() {
-  localStorage.setItem("estadoCursos", JSON.stringify(estado));
+  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
 }
 
-function estaDesbloqueada(nombre) {
-  const bloqueantes = materias.filter(m =>
-    m.desbloquea.includes(nombre)
-  );
-  if (bloqueantes.length === 0) return true;
-  return bloqueantes.every(m => estado[m.nombre] === "completado");
+function estaDesbloqueada(materia) {
+  if (materia.ciclo === 1) return true; // solo ciclo 1 se desbloquea de inicio
+  const prerrequisitos = materias.filter(m => m.desbloquea.includes(materia.nombre));
+  return prerrequisitos.every(m => estado[m.nombre] === "completado");
 }
 
 function renderMalla() {
@@ -100,32 +97,39 @@ function renderMalla() {
   const ciclos = [...new Set(materias.map(m => m.ciclo))].sort((a, b) => a - b);
 
   ciclos.forEach(ciclo => {
-    const cicloDiv = document.createElement("div");
-    cicloDiv.className = "ciclo";
+    const seccion = document.createElement("div");
+    seccion.className = "ciclo";
+
     const titulo = document.createElement("h3");
     titulo.textContent = `Ciclo ${ciclo}`;
-    cicloDiv.appendChild(titulo);
+    seccion.appendChild(titulo);
 
     const grupo = document.createElement("div");
     grupo.className = "materias";
 
-    materias.filter(m => m.ciclo === ciclo).forEach(m => {
+    materias.filter(m => m.ciclo === ciclo).forEach(materia => {
       const tarjeta = document.createElement("div");
       tarjeta.className = "materia";
 
-      const desbloqueada = estaDesbloqueada(m.nombre);
-      if (!desbloqueada) tarjeta.classList.add("locked");
-      if (estado[m.nombre] === "completado") tarjeta.classList.add("completed");
+      if (!estaDesbloqueada(materia)) {
+        tarjeta.classList.add("locked");
+      }
 
-      tarjeta.innerHTML = `${m.nombre}<small>${m.creditos} créditos</small>`;
+      if (estado[materia.nombre] === "completado") {
+        tarjeta.classList.add("completed");
+      }
+
+      tarjeta.innerHTML = `${materia.nombre}<small>${materia.creditos} créditos</small>`;
 
       tarjeta.onclick = () => {
-        if (!desbloqueada) return;
-        if (estado[m.nombre] === "completado") {
-          delete estado[m.nombre];
+        if (tarjeta.classList.contains("locked")) return;
+
+        if (estado[materia.nombre] === "completado") {
+          delete estado[materia.nombre];
         } else {
-          estado[m.nombre] = "completado";
+          estado[materia.nombre] = "completado";
         }
+
         guardarEstado();
         renderMalla();
       };
@@ -133,8 +137,8 @@ function renderMalla() {
       grupo.appendChild(tarjeta);
     });
 
-    cicloDiv.appendChild(grupo);
-    contenedor.appendChild(cicloDiv);
+    seccion.appendChild(grupo);
+    contenedor.appendChild(seccion);
   });
 }
 
