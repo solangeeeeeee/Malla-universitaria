@@ -96,6 +96,11 @@ function crearMateria(m) {
 }
 
 function estaDesbloqueada(materia) {
+  // Desbloqueos especiales por nombre
+  if (["Realidad Nacional", "Inglés"].includes(materia.nombre)) {
+    return true; // siempre disponibles
+  }
+
   const prerrequisitos = materias.filter(m => m.desbloquea.includes(materia.nombre));
   if (prerrequisitos.length === 0) {
     return materia.ciclo <= 3;
