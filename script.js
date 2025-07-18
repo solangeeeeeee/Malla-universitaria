@@ -23,8 +23,7 @@ const materias = [
   { nombre: "Ingles", ciclo: 3, desbloquea: [] },
   { nombre: "Estadística aplicada a la psicologia", ciclo: 3, desbloquea: ["Psicometría"] },
   { nombre: "Desarrollo Psicologico 1", ciclo: 3, desbloquea: ["Desarrollo psicologico 2"] },
-];
-materias.push(
+
   { nombre: "Taller de Desarrollo Personal 2", ciclo: 4, desbloquea: [] },
   { nombre: "Psicometría", ciclo: 4, desbloquea: ["Pruebas psicologicas 1", "Metodología de la investigación para psicología"] },
   { nombre: "Psicologia social", ciclo: 4, desbloquea: ["Psicologia de las organizaciones", "Dinamica y abordaje de grupos"] },
