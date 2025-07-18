@@ -90,12 +90,16 @@ function crearMateria(m) {
   div.className = "materia";
   div.innerHTML = `<i class="fas fa-brain"></i><span class="nombre">${m.nombre}</span><small>${m.creditos} créditos</small>`;
 
+  if (estado[m.nombre] === "completado") {
+    div.classList.add("completed");
+  }
+
   if (!estaDesbloqueada(m)) {
     div.classList.add("locked");
   } else {
     div.addEventListener("click", () => {
-      div.classList.toggle("completed");
-      estado[m.nombre] = div.classList.contains("completed") ? "completado" : null;
+      const yaCompleto = div.classList.toggle("completed");
+      estado[m.nombre] = yaCompleto ? "completado" : null;
       actualizarDesbloqueo();
     });
   }
