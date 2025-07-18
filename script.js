@@ -77,7 +77,24 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] },
 ];
 
+const materias = [/* ... aquí va toda tu lista de materias como antes ... */];
+
+// Objeto para guardar el estado de materias
 const estado = {};
+
+function guardarEstado() {
+  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
+}
+
+function cargarEstado() {
+  const guardado = localStorage.getItem("estadoMaterias");
+  if (guardado) {
+    const datos = JSON.parse(guardado);
+    Object.keys(datos).forEach(nombre => {
+      estado[nombre] = datos[nombre];
+    });
+  }
+}
 
 function estaDesbloqueada(m) {
   if (["Realidad Nacional", "Inglés"].includes(m.nombre)) return true;
@@ -88,7 +105,13 @@ function estaDesbloqueada(m) {
 function crearMateria(m) {
   const div = document.createElement("div");
   div.className = "materia";
-  div.innerHTML = `<i class="fas fa-brain"></i><span class="nombre">${m.nombre}</span><small>${m.creditos} créditos</small>`;
+  const nombreSpan = document.createElement("span");
+  nombreSpan.className = "nombre";
+  nombreSpan.textContent = m.nombre;
+
+  div.innerHTML = `<i class="fas fa-brain"></i>`;
+  div.appendChild(nombreSpan);
+  div.innerHTML += `<small>${m.creditos} créditos</small>`;
 
   if (estado[m.nombre] === "completado") {
     div.classList.add("completed");
@@ -98,11 +121,15 @@ function crearMateria(m) {
     div.classList.add("locked");
   } else {
     div.addEventListener("click", () => {
-  const yaCompleto = div.classList.toggle("completed");
-  estado[m.nombre] = yaCompleto ? "completado" : null;
-  guardarEstado();
-  actualizarDesbloqueo();
-});
+      const yaCompleto = div.classList.toggle("completed");
+      if (yaCompleto) {
+        estado[m.nombre] = "completado";
+      } else {
+        delete estado[m.nombre];
+      }
+      guardarEstado();
+      actualizarDesbloqueo();
+    });
   }
 
   return div;
@@ -123,10 +150,7 @@ function actualizarDesbloqueo() {
 
     materias.filter(m => m.ciclo === c).forEach(m => {
       const div = crearMateria(m);
-      if (estado[m.nombre] === "completado") {
-        div.classList.add("completed");
-        completadas++;
-      }
+      if (estado[m.nombre] === "completado") completadas++;
       grupo.appendChild(div);
     });
 
@@ -143,17 +167,3 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarEstado();
   actualizarDesbloqueo();
 });
-
-function guardarEstado() {
-  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
-}
-
-function cargarEstado() {
-  const guardado = localStorage.getItem("estadoMaterias");
-  if (guardado) {
-    const datos = JSON.parse(guardado);
-    Object.keys(datos).forEach(nombre => {
-      estado[nombre] = datos[nombre];
-    });
-  }
-}
