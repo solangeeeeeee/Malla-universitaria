@@ -1,167 +1,182 @@
 const materias = [
   // Ciclo 1
-  { nombre: "Taller de Expresion Corporal", ciclo: 1, creditos: 2, desbloquea: ["Taller Presentaciones Efectivas"] },
-  { nombre: "Matemática", ciclo: 1, creditos: 3, desbloquea: ["Estadística General"] },
-  { nombre: "Lengua y comunicación", ciclo: 1, creditos: 3, desbloquea: [] },
-  { nombre: "Introducción a la psicología", ciclo: 1, creditos: 3, desbloquea: ["Historia y sistemas Psicologicos"] },
-  { nombre: "Filosofía", ciclo: 1, creditos: 3, desbloquea: ["Lógica"] },
-  { nombre: "Desempeño universitario", ciclo: 1, creditos: 2, desbloquea: ["Ciencias Sociales"] },
-  { nombre: "Biología", ciclo: 1, creditos: 4, desbloquea: ["Morfo fisiología del Sistema Nervioso", "Educación Ambiental"] },
+  { nombre: "Taller de Expresion Corporal", ciclo: 1, desbloquea: ["Taller Presentaciones Efectivas"] },
+  { nombre: "Matemática", ciclo: 1, desbloquea: ["Estadística General"] },
+  { nombre: "Lengua y comunicación", ciclo: 1, desbloquea: [] },
+  { nombre: "Introducción a la psicología", ciclo: 1, desbloquea: ["Historia y sistemas Psicologicos"] },
+  { nombre: "Filosofía", ciclo: 1, desbloquea: ["Lógica"] },
+  { nombre: "Desempeño universitario", ciclo: 1, desbloquea: ["Ciencias Sociales"] },
+  { nombre: "Biología", ciclo: 1, desbloquea: ["Morfo fisiología del Sistema Nervioso", "Educación Ambiental"] },
 
   // Ciclo 2
-  { nombre: "Taller Presentaciones Efectivas", ciclo: 2, creditos: 1, desbloquea: ["Taller de Desarrollo Personal 1"] },
-  { nombre: "Morfo fisiología del Sistema Nervioso", ciclo: 2, creditos: 4, desbloquea: ["Psicobiología"] },
-  { nombre: "Lógica", ciclo: 2, creditos: 3, desbloquea: [] },
-  { nombre: "Historia y sistemas Psicologicos", ciclo: 2, creditos: 3, desbloquea: ["Psicología de la Personalidad", "Procesos Cognitivos", "Desarrollo Psicológico 1"] },
-  { nombre: "Estadística General", ciclo: 2, creditos: 4, desbloquea: ["Estadística Aplicada a la Psicología"] },
-  { nombre: "Educación Ambiental", ciclo: 2, creditos: 2, desbloquea: [] },
-  { nombre: "Ciencias Sociales", ciclo: 2, creditos: 3, desbloquea: [] },
+  { nombre: "Taller Presentaciones Efectivas", ciclo: 2, desbloquea: ["Taller de Desarrollo Personal 1"] },
+  { nombre: "Morfo fisiología del Sistema Nervioso", ciclo: 2, desbloquea: ["Psicobiologia"] },
+  { nombre: "Lógica", ciclo: 2, desbloquea: [] },
+  { nombre: "Historia y sistemas Psicologicos", ciclo: 2, desbloquea: ["Psicologia de la Personalidad", "Procesos Cognitivos", "Desarrollo Psicologico 1"] },
+  { nombre: "Estadística General", ciclo: 2, desbloquea: ["Estadística aplicada a la psicologia"] },
+  { nombre: "Educación Ambiental", ciclo: 2, desbloquea: [] },
+  { nombre: "Ciencias Sociales", ciclo: 2, desbloquea: [] },
 
   // Ciclo 3
-  { nombre: "Taller de Desarrollo Personal 1", ciclo: 3, creditos: 1, desbloquea: ["Taller de Desarrollo Personal 2"] },
-  { nombre: "Realidad Nacional", ciclo: 3, creditos: 3, desbloquea: ["Psicología Social"] },
-  { nombre: "Psicología de la Personalidad", ciclo: 3, creditos: 3, desbloquea: ["Psicoanálisis", "Psicopatología 1"] },
-  { nombre: "Psicobiología", ciclo: 3, creditos: 3, desbloquea: ["Procesos afectivos-emocionales", "Motivación y emoción"] },
-  { nombre: "Procesos Cognitivos", ciclo: 3, creditos: 3, desbloquea: [] },
-  { nombre: "Inglés", ciclo: 3, creditos: 2, desbloquea: [] },
-  { nombre: "Estadística Aplicada a la Psicología", ciclo: 3, creditos: 3, desbloquea: ["Psicometría"] },
-  { nombre: "Desarrollo Psicológico 1", ciclo: 3, creditos: 3, desbloquea: ["Desarrollo Psicológico 2"] },
+  { nombre: "Taller de Desarrollo Personal 1", ciclo: 3, desbloquea: ["Taller de Desarrollo Personal 2"] },
+  { nombre: "Realidad Nacional", ciclo: 3, desbloquea: ["Psicologia social"] },
+  { nombre: "Psicologia de la Personalidad", ciclo: 3, desbloquea: ["Psicoanalisis", "Psicopatologia 1"] },
+  { nombre: "Psicobiologia", ciclo: 3, desbloquea: ["Procesos afectivos-emocionales", "Motivación y emoción"] },
+  { nombre: "Procesos Cognitivos", ciclo: 3, desbloquea: [] },
+  { nombre: "Inglés", ciclo: 3, desbloquea: [] },
+  { nombre: "Estadística aplicada a la psicologia", ciclo: 3, desbloquea: ["Psicometría"] },
+  { nombre: "Desarrollo Psicologico 1", ciclo: 3, desbloquea: ["Desarrollo Psicologico 2"] },
 
   // Ciclo 4
-  { nombre: "Taller de Desarrollo Personal 2", ciclo: 4, creditos: 1, desbloquea: [] },
-  { nombre: "Psicometría", ciclo: 4, creditos: 4, desbloquea: ["Pruebas Psicológicas 1", "Metodología de la Investigación para Psicología"] },
-  { nombre: "Psicología Social", ciclo: 4, creditos: 3, desbloquea: ["Psicología de las Organizaciones", "Dinámica y Abordaje de Grupos"] },
-  { nombre: "Psicoanálisis", ciclo: 4, creditos: 3, desbloquea: ["Modelo Psicoterapéutico Humanista"] },
-  { nombre: "Procesos afectivos-emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
-  { nombre: "Motivación y emoción", ciclo: 4, creditos: 3, desbloquea: ["Psicopatología 1", "Psicología del Aprendizaje"] },
-  { nombre: "Desarrollo Psicológico 2", ciclo: 4, creditos: 3, desbloquea: ["Entrevista y Observación Psicológica"] },
+  { nombre: "Taller de Desarrollo Personal 2", ciclo: 4, desbloquea: [] },
+  { nombre: "Psicometría", ciclo: 4, desbloquea: ["Pruebas psicologicas 1", "Metodología de la investigación para psicología"] },
+  { nombre: "Psicologia social", ciclo: 4, desbloquea: ["Psicologia de las organizaciones", "Dinamica y abordaje de grupos"] },
+  { nombre: "Psicoanalisis", ciclo: 4, desbloquea: ["Modelo psicoterapeutico humanista"] },
+  { nombre: "Procesos afectivos-emocionales", ciclo: 4, desbloquea: [] },
+  { nombre: "Motivación y emoción", ciclo: 4, desbloquea: ["Psicopatologia 1", "Psicologia del aprendizaje"] },
+  { nombre: "Desarrollo Psicologico 2", ciclo: 4, desbloquea: ["Entrevista y observación psicologica"] }
+  
+  { nombre: "Psicopatologia 1", ciclo: 5, desbloquea: ["Psicopatologia 2"] },
+  { nombre: "Psicologia del aprendizaje", ciclo: 5, desbloquea: ["Psicologia educativa"] },
+  { nombre: "Psicologia de las organizaciones", ciclo: 5, desbloquea: ["Comportamiento y cultura organizacional"] },
+  { nombre: "Pruebas psicologicas 1", ciclo: 5, desbloquea: ["Pruebas Psicologicas 2"] },
+  { nombre: "Modelo psicoterapeutico humanista", ciclo: 5, desbloquea: ["Psicologia de la sexualidad"] },
+  { nombre: "Entrevista y observación psicologica", ciclo: 5, desbloquea: ["Consejo psicologico"] },
 
-  // Ciclo 5
-  { nombre: "Psicopatología 1", ciclo: 5, creditos: 4, desbloquea: ["Psicopatología 2"] },
-  { nombre: "Psicología del Aprendizaje", ciclo: 5, creditos: 3, desbloquea: ["Psicología Educativa"] },
-  { nombre: "Psicología de las Organizaciones", ciclo: 5, creditos: 3, desbloquea: ["Comportamiento y Cultura Organizacional"] },
-  { nombre: "Pruebas Psicológicas 1", ciclo: 5, creditos: 3, desbloquea: ["Pruebas Psicológicas 2"] },
-  { nombre: "Modelo Psicoterapéutico Humanista", ciclo: 5, creditos: 3, desbloquea: ["Psicología de la Sexualidad"] },
-  { nombre: "Entrevista y Observación Psicológica", ciclo: 5, creditos: 3, desbloquea: ["Consejo Psicológico"] },
+  { nombre: "Psicopatologia 2", ciclo: 6, desbloquea: ["Neuropsicología"] },
+  { nombre: "Psicologia de la sexualidad", ciclo: 6, desbloquea: ["Psicologia positiva"] },
+  { nombre: "Psicología educativa", ciclo: 6, desbloquea: [] },
+  { nombre: "Pruebas Psicologicas 2", ciclo: 6, desbloquea: ["Evaluación y diagnóstico psicológico"] },
+  { nombre: "Dinamica y abordaje de grupos", ciclo: 6, desbloquea: ["Psicología comunitaria y ambiental"] },
+  { nombre: "Consejo psicologico", ciclo: 6, desbloquea: ["Modelo Psicoterapéutico cognitivo - conductual"] },
 
-  // Ciclo 6
-  { nombre: "Psicopatología 2", ciclo: 6, creditos: 4, desbloquea: ["Neuropsicología"] },
-  { nombre: "Psicología de la Sexualidad", ciclo: 6, creditos: 3, desbloquea: ["Psicología Positiva"] },
-  { nombre: "Psicología Educativa", ciclo: 6, creditos: 4, desbloquea: [] },
-  { nombre: "Pruebas Psicológicas 2", ciclo: 6, creditos: 3, desbloquea: ["Evaluación y Diagnóstico Psicológico"] },
-  { nombre: "Dinámica y Abordaje de Grupos", ciclo: 6, creditos: 2, desbloquea: ["Psicología Comunitaria y Ambiental"] },
-  { nombre: "Consejo Psicológico", ciclo: 6, creditos: 3, desbloquea: ["Modelo Psicoterapéutico Cognitivo - Conductual"] },
+  { nombre: "Psicología positiva", ciclo: 7, desbloquea: ["Psicología clínica y de la salud"] },
+  { nombre: "Psicología comunitaria y ambiental", ciclo: 7, desbloquea: ["Programa de internado aplicado a psicología"] },
+  { nombre: "Neuropsicología", ciclo: 7, desbloquea: [] },
+  { nombre: "Modelo Psicoterapéutico cognitivo - conductual", ciclo: 7, desbloquea: [] },
+  { nombre: "Evaluación y diagnóstico psicológico", ciclo: 7, desbloquea: ["Orientación vocacional y profesional", "Modelo psicoterapéutico familiar sistem", "Integrity and Professional Ethical"] },
+  { nombre: "Comportamiento y cultura organizacional", ciclo: 7, desbloquea: [] },
 
-  // Ciclo 7
-  { nombre: "Psicología Positiva", ciclo: 7, creditos: 3, desbloquea: ["Psicología Clínica y de la Salud"] },
-  { nombre: "Psicología Comunitaria y Ambiental", ciclo: 7, creditos: 3, desbloquea: ["Programa de Internado Aplicado a Psicología"] },
-  { nombre: "Neuropsicología", ciclo: 7, creditos: 4, desbloquea: [] },
-  { nombre: "Modelo Psicoterapéutico Cognitivo - Conductual", ciclo: 7, creditos: 3, desbloquea: [] },
-  { nombre: "Evaluación y Diagnóstico Psicológico", ciclo: 7, creditos: 3, desbloquea: ["Orientación Vocacional y Profesional", "Modelo Psicoterapéutico Familiar Sistem", "Integrity and Professional Ethical"] },
-  { nombre: "Comportamiento y Cultura Organizacional", ciclo: 7, creditos: 3, desbloquea: [] },
+  { nombre: "Psicología clínica y de la salud", ciclo: 8, desbloquea: [] },
+  { nombre: "Programa de internado aplicado a psicología", ciclo: 8, desbloquea: [] },
+  { nombre: "Orientación vocacional y profesional", ciclo: 8, desbloquea: [] },
+  { nombre: "Modelo psicoterapéutico familiar sistem", ciclo: 8, desbloquea: [] },
+  { nombre: "Metodología de la investigación para psicología", ciclo: 8, desbloquea: ["Seminario de tesis"] },
+  { nombre: "Integrity and Professional Ethical", ciclo: 8, desbloquea: ["Internado 1"] },
 
-  // Ciclo 8
-  { nombre: "Psicología Clínica y de la Salud", ciclo: 8, creditos: 4, desbloquea: [] },
-  { nombre: "Programa de Internado Aplicado a Psicología", ciclo: 8, creditos: 4, desbloquea: [] },
-  { nombre: "Orientación Vocacional y Profesional", ciclo: 8, creditos: 2, desbloquea: [] },
-  { nombre: "Modelo Psicoterapéutico Familiar Sistem", ciclo: 8, creditos: 3, desbloquea: [] },
-  { nombre: "Metodología de la Investigación para Psicología", ciclo: 8, creditos: 3, desbloquea: ["Seminario de Tesis"] },
-  { nombre: "Integrity and Professional Ethical", ciclo: 8, creditos: 3, desbloquea: ["Internado 1"] },
+  { nombre: "Seminario de tesis", ciclo: 9, desbloquea: ["Trabajo de investigación"] },
+  { nombre: "Internado 1", ciclo: 9, desbloquea: ["Internado 2"] },
 
-  // Ciclo 9
-  { nombre: "Seminario de Tesis", ciclo: 9, creditos: 3, desbloquea: ["Trabajo de Investigación"] },
-  { nombre: "Internado 1", ciclo: 9, creditos: 15, desbloquea: ["Internado 2"] },
-
-  // Ciclo 10
-  { nombre: "Trabajo de Investigación", ciclo: 10, creditos: 3, desbloquea: [] },
-  { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] },
-];
-
-// Objeto para guardar el estado de materias
-const estado = {};
+  { nombre: "Trabajo de investigación", ciclo: 10, desbloquea: [] },
+  { nombre: "Internado 2", ciclo: 10, desbloquea: [] }
+);
 
 function guardarEstado() {
-  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
+  localStorage.setItem("materiasCompletadas", JSON.stringify(materiasCompletadas));
 }
 
 function cargarEstado() {
-  const guardado = localStorage.getItem("estadoMaterias");
-  if (guardado) {
-    const datos = JSON.parse(guardado);
-    Object.keys(datos).forEach(nombre => {
-      estado[nombre] = datos[nombre];
-    });
+  const estadoGuardado = localStorage.getItem("materiasCompletadas");
+  if (estadoGuardado) {
+    materiasCompletadas = JSON.parse(estadoGuardado);
   }
 }
 
-function estaDesbloqueada(m) {
-  if (["Realidad Nacional", "Inglés"].includes(m.nombre)) return true;
-  const requisitos = materias.filter(pr => pr.desbloquea.includes(m.nombre));
-  return requisitos.length === 0 || requisitos.every(r => estado[r.nombre] === "completado");
-}
+let materiasCompletadas = [];
 
-function crearMateria(m) {
+function crearTarjetaMateria(materia) {
   const div = document.createElement("div");
   div.className = "materia";
-  const nombreSpan = document.createElement("span");
-  nombreSpan.className = "nombre";
-  nombreSpan.textContent = m.nombre;
+  div.innerHTML = `<i class="fas fa-brain"></i><span class="nombre">${materia.nombre}</span>`;
+  div.dataset.nombre = materia.nombre;
 
-  div.innerHTML = `<i class="fas fa-brain"></i>`;
-  div.appendChild(nombreSpan);
-  div.innerHTML += `<small>${m.creditos} créditos</small>`;
-
-  if (estado[m.nombre] === "completado") {
-    div.classList.add("completed");
-  }
-
-  if (!estaDesbloqueada(m)) {
+  if (!estaDesbloqueada(materia)) {
     div.classList.add("locked");
   } else {
     div.addEventListener("click", () => {
-      const yaCompleto = div.classList.toggle("completed");
-      if (yaCompleto) {
-        estado[m.nombre] = "completado";
+      div.classList.toggle("completed");
+      const span = div.querySelector("span");
+      const nombre = materia.nombre;
+
+      if (materiasCompletadas.includes(nombre)) {
+        materiasCompletadas = materiasCompletadas.filter(m => m !== nombre);
       } else {
-        delete estado[m.nombre];
+        materiasCompletadas.push(nombre);
       }
+
+      actualizarEstilos(div, span, nombre);
       guardarEstado();
       actualizarDesbloqueo();
+      actualizarProgreso();
     });
+  }
+
+  if (materiasCompletadas.includes(materia.nombre)) {
+    div.classList.add("completed");
+    div.querySelector("span").style.textDecoration = "line-through";
+    div.querySelector("span").style.opacity = "0.6";
   }
 
   return div;
 }
 
+function estaDesbloqueada(materia) {
+  if (materia.ciclo === 1) return true;
+  for (const m of materias) {
+    if (m.desbloquea.includes(materia.nombre)) {
+      if (!materiasCompletadas.includes(m.nombre)) return false;
+    }
+  }
+  return true;
+}
+
+function actualizarEstilos(div, span, nombre) {
+  if (materiasCompletadas.includes(nombre)) {
+    div.classList.add("completed");
+    span.style.textDecoration = "line-through";
+    span.style.opacity = "0.6";
+  } else {
+    div.classList.remove("completed");
+    span.style.textDecoration = "none";
+    span.style.opacity = "1";
+  }
+}
+
 function actualizarDesbloqueo() {
-  const container = document.getElementById("malla-container");
-  container.innerHTML = "";
-  const ciclos = [...new Set(materias.map(m => m.ciclo))];
-  let completadas = 0;
+  const contenedor = document.getElementById("malla-container");
+  contenedor.innerHTML = "";
 
-  ciclos.forEach(c => {
-    const bloque = document.createElement("div");
-    bloque.className = "ciclo";
-    bloque.innerHTML = `<h3>Ciclo ${c}</h3>`;
-    const grupo = document.createElement("div");
-    grupo.className = "materias";
+  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))].sort((a, b) => a - b);
 
-    materias.filter(m => m.ciclo === c).forEach(m => {
-      const div = crearMateria(m);
-      if (estado[m.nombre] === "completado") completadas++;
-      grupo.appendChild(div);
+  ciclosUnicos.forEach(ciclo => {
+    const cicloDiv = document.createElement("div");
+    cicloDiv.className = "ciclo";
+    cicloDiv.innerHTML = `<h3>Ciclo ${ciclo}</h3>`;
+
+    const materiasCiclo = materias.filter(m => m.ciclo === ciclo);
+    const materiasContainer = document.createElement("div");
+    materiasContainer.className = "materias";
+
+    materiasCiclo.forEach(materia => {
+      const tarjeta = crearTarjetaMateria(materia);
+      materiasContainer.appendChild(tarjeta);
     });
 
-    bloque.appendChild(grupo);
-    container.appendChild(bloque);
+    cicloDiv.appendChild(materiasContainer);
+    contenedor.appendChild(cicloDiv);
   });
+}
 
-  const porcentaje = Math.round((completadas / materias.length) * 100);
-  document.getElementById("progreso-interno").style.width = porcentaje + "%";
-  document.getElementById("porcentaje").textContent = porcentaje + "%";
+function actualizarProgreso() {
+  const total = materias.length;
+  const completadas = materiasCompletadas.length;
+  const porcentaje = Math.floor((completadas / total) * 100);
+  document.getElementById("progreso-interno").style.width = `${porcentaje}%`;
+  document.getElementById("porcentaje").innerText = `${porcentaje}%`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarEstado();
   actualizarDesbloqueo();
+  actualizarProgreso();
 });
