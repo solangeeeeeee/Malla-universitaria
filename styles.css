@@ -1,70 +1,74 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #ffe4ec, #fff0f5);
-  color: #444;
+  background: #fff4fa;
+  color: #222;
   text-align: center;
   padding: 2rem;
 }
 
 h1 {
-  color: #d16b86;
+  color: #b84d7e;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #6b4b6d;
   margin-bottom: 2rem;
-  font-size: 2.2rem;
 }
 
 .ciclo {
   margin-bottom: 3rem;
 }
 
-.ciclo h2 {
-  color: #c0517e;
+.ciclo h3 {
+  color: #6b4b6d;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
-  font-size: 1.6rem;
 }
 
 .materias {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .materia {
-  background-color: #fdd8e3;
-  border: 2px solid #f5a3c2;
-  border-radius: 15px;
+  background-color: #fcd7e5;
+  border: 2px solid #f4a8c2;
+  border-radius: 12px;
   padding: 1rem;
-  width: 190px;
+  width: 180px;
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
-  position: relative;
+  transition: all 0.2s ease;
 }
 
 .materia:hover {
-  transform: scale(1.05);
-  background: #fcbcd6;
+  transform: scale(1.04);
+  background-color: #f9bdd3;
 }
 
 .materia.locked {
-  background: #f0e1ea;
-  border-color: #d6bfc7;
-  color: #999;
+  background-color: #e9e3f7;
+  border-color: #c5b9e2;
+  color: #888;
   pointer-events: none;
-  opacity: 0.6;
 }
 
 .materia.completed {
-  background: #c9f7e0;
-  border-color: #8ed1b7;
-  color: #2d6a4f;
+  background-color: #c6f5e9;
+  border-color: #8bd1b6;
+  color: #22684f;
 }
 
 .materia small {
   display: block;
-  font-weight: normal;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #555;
+  font-weight: normal;
+  color: #444;
 }
