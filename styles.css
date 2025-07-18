@@ -1,109 +1,87 @@
 body {
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #fff8fa;
-  color: #4a4a4a;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0f5;
+  color: #444;
   margin: 0;
   padding: 2rem;
 }
 
-.titulo {
+h1 {
   text-align: center;
-  color: #d48cac;
-  font-size: 2em;
-  margin-bottom: 1rem;
+  color: #c97aa6;
 }
 
-#progreso {
-  position: relative;
-  height: 20px;
-  background-color: #f3dce6;
-  border-radius: 10px;
-  margin: 1rem auto 2rem auto;
+#barra-progreso {
   width: 90%;
-  max-width: 800px;
+  margin: 1rem auto;
+  background: #f5d3eb;
+  border-radius: 20px;
+  height: 25px;
+  overflow: hidden;
 }
 
 #progreso-interno {
-  background-color: #d6b4dd;
   height: 100%;
+  background-color: #e6b5cb;
   width: 0%;
-  border-radius: 10px;
+  text-align: center;
+  line-height: 25px;
+  color: #fff;
+  border-radius: 20px;
   transition: width 0.3s ease;
 }
 
-#porcentaje {
-  position: absolute;
-  top: -25px;
-  right: 10px;
-  font-weight: bold;
-  color: #a86fa6;
-}
-
 .ciclo {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .ciclo h3 {
-  background-color: #fce4ec;
-  color: #ba6790;
-  padding: 0.5rem;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1.2em;
+  color: #b06fa1;
+  margin-bottom: 0.5rem;
 }
 
 .materias {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
+  gap: 10px;
 }
 
 .materia {
-  background-color: #fddde6;
-  border: 1px solid #f8c3d7;
-  padding: 1rem;
+  background-color: #fbe4ee;
+  border: 2px solid #f3cde2;
   border-radius: 10px;
-  text-align: center;
+  padding: 10px;
   width: 180px;
+  min-height: 90px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: transform 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  font-size: 0.95em;
-}
-
-.materia:hover {
-  transform: scale(1.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: 0.3s ease;
 }
 
 .materia i {
-  display: block;
-  font-size: 1.3em;
-  margin-bottom: 0.3rem;
-  color: #ba6790;
-}
-
-.materia small {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.8em;
-  color: #6e6e6e;
+  font-size: 20px;
+  color: #d68eb4;
+  margin-bottom: 5px;
 }
 
 .materia.locked {
-  background-color: #fbeef2;
-  border: 1px dashed #e8c7d1;
-  color: #999;
+  background-color: #fdf6f9;
+  color: #ccc;
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .materia.completed {
+  background-color: #F4A4C6 !important;  /* rosa más fuerte */
   background-color: #fad5e0 !important;
 }
 
 .materia.completed .nombre {
+  background-color: #F4A4C6 !important;  /* rosa más fuerte */
   text-decoration: line-through;
   opacity: 0.6;
 }
