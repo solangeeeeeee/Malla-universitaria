@@ -1,46 +1,70 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff0f5;
-  color: #333;
+  background: linear-gradient(to bottom, #ffe4ec, #fff0f5);
+  color: #444;
   text-align: center;
   padding: 2rem;
 }
 
 h1 {
-  color: #d36b9b;
+  color: #d16b86;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+.ciclo {
+  margin-bottom: 3rem;
+}
+
+.ciclo h2 {
+  color: #c0517e;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.materias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  margin-top: 2rem;
-  padding: 1rem;
 }
 
-.course {
-  background-color: #f9cdda;
-  border: 2px solid #f5a9c1;
+.materia {
+  background-color: #fdd8e3;
+  border: 2px solid #f5a3c2;
+  border-radius: 15px;
   padding: 1rem;
-  border-radius: 12px;
+  width: 190px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
+  position: relative;
 }
 
-.course:hover {
-  background-color: #f7b0ca;
+.materia:hover {
+  transform: scale(1.05);
+  background: #fcbcd6;
 }
 
-.course.locked {
-  background-color: #f3e0e6;
-  border-color: #e0c3ca;
-  color: #aaa;
-  cursor: not-allowed;
+.materia.locked {
+  background: #f0e1ea;
+  border-color: #d6bfc7;
+  color: #999;
   pointer-events: none;
+  opacity: 0.6;
 }
 
-.course.completed {
-  background-color: #c9f7e0;
+.materia.completed {
+  background: #c9f7e0;
   border-color: #8ed1b7;
   color: #2d6a4f;
+}
+
+.materia small {
+  display: block;
+  font-weight: normal;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #555;
 }
