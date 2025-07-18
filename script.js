@@ -77,28 +77,14 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] }
 ];
 
+// Estado de materias completadas
 const estado = {};
 
-function crearMateria(m) {
-  const div = document.createElement("div");
-  div.className = "materia";
-  div.innerHTML = `<i class="fas fa-brain"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
-  if (!estaDesbloqueada(m)) {
-    div.classList.add("locked");
-  } else {
-    div.addEventListener("click", () => {
-      div.classList.toggle("completed");
-      estado[m.nombre] = div.classList.contains("completed") ? "completado" : null;
-      actualizarDesbloqueo();
-    });
-  }
-  return div;
-}
-
+// Función para saber si la materia está desbloqueada
 function estaDesbloqueada(materia) {
-  // Desbloqueos especiales por nombre
+  // Casos especiales: siempre desbloqueados
   if (["Realidad Nacional", "Inglés"].includes(materia.nombre)) {
-    return true; // siempre disponibles
+    return true;
   }
 
   const prerrequisitos = materias.filter(m => m.desbloquea.includes(materia.nombre));
@@ -108,6 +94,26 @@ function estaDesbloqueada(materia) {
   return prerrequisitos.every(m => estado[m.nombre] === "completado");
 }
 
+// Crear visualmente una tarjeta de materia
+function crearMateria(m) {
+  const div = document.createElement("div");
+  div.className = "materia";
+  div.innerHTML = `<i class="fas fa-brain"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
+
+  if (!estaDesbloqueada(m)) {
+    div.classList.add("locked");
+  } else {
+    div.addEventListener("click", () => {
+      div.classList.toggle("completed");
+      estado[m.nombre] = div.classList.contains("completed") ? "completado" : null;
+      actualizarDesbloqueo();
+    });
+  }
+
+  return div;
+}
+
+// Actualizar pantalla y progreso
 function actualizarDesbloqueo() {
   const container = document.getElementById("malla-container");
   container.innerHTML = "";
@@ -136,4 +142,5 @@ function actualizarDesbloqueo() {
   document.getElementById("porcentaje").innerText = porcentaje + "%";
 }
 
+// Cuando se carga la página
 document.addEventListener("DOMContentLoaded", actualizarDesbloqueo);
