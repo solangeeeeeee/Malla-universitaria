@@ -1,83 +1,97 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff0f5;
+  background-color: #fff9fc;
   color: #444;
-  margin: 0;
   padding: 2rem;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
-  color: #c97aa6;
+  font-size: 2rem;
+  color: #ce7aa4;
+  margin-bottom: 2rem;
 }
 
 #barra-progreso {
   width: 90%;
-  margin: 1rem auto;
-  background: #f5d3eb;
-  border-radius: 20px;
+  margin: auto;
+  background-color: #f3e1ec;
+  border-radius: 30px;
   height: 25px;
+  margin-bottom: 2rem;
   overflow: hidden;
+  border: 2px solid #f7cce5;
 }
 
 #progreso-interno {
   height: 100%;
-  background-color: #e6b5cb;
   width: 0%;
-  text-align: center;
+  background-color: #f4a4c6;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
   line-height: 25px;
-  color: #fff;
-  border-radius: 20px;
-  transition: width 0.3s ease;
+  padding-right: 10px;
+  transition: width 0.4s ease-in-out;
 }
 
 .ciclo {
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
-.ciclo h3 {
-  color: #b06fa1;
-  margin-bottom: 0.5rem;
+h3 {
+  color: #d18dbb;
+  margin-bottom: 1rem;
 }
 
 .materias {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 10px;
 }
 
 .materia {
-  background-color: #fbe4f0;
-  border: 1px solid #e8c6db;
-  padding: 10px;
-  border-radius: 10px;
-  width: 230px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 100px;
+  background-color: #fce3ec;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(200, 100, 150, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
 }
 
 .materia.locked {
-  background-color: #ede7f6;
-  color: #aaa;
-  pointer-events: none;
-  border-style: dashed;
+  background-color: #f9f0f5;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .materia.completed {
-  background-color: #f4a4c6 !important;
-}
-
-.materia.completed span {
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  opacity: 1;
+  background-color: #f8c6d8;
 }
 
 .materia i {
-  color: #b28cb6;
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #c77eac;
+}
+
+.nombre {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 5px;
+}
+
+.materia.completed .nombre {
+  text-decoration: line-through;
+  font-weight: 400;
+  opacity: 1;
 }
