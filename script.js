@@ -1,4 +1,3 @@
-// Lista de materias con ciclo, créditos y desbloqueos
 const materias = [
   // Ciclo 1
   { nombre: "Taller de Expresión Corporal", ciclo: 1, creditos: 2, desbloquea: ["Taller Presentaciones Efectivas"] },
@@ -22,7 +21,7 @@ const materias = [
   { nombre: "Taller de Desarrollo Personal 1", ciclo: 3, creditos: 1, desbloquea: ["Taller de Desarrollo Personal 2"] },
   { nombre: "Realidad Nacional", ciclo: 3, creditos: 3, desbloquea: ["Psicología Social"] },
   { nombre: "Psicología de la Personalidad", ciclo: 3, creditos: 3, desbloquea: ["Psicoanálisis", "Psicopatología 1"] },
-  { nombre: "Psicobiología", ciclo: 3, creditos: 3, desbloquea: ["Procesos Afectivos-Emocionales", "Motivación y Emoción"] },
+  { nombre: "Psicobiología", ciclo: 3, creditos: 3, desbloquea: ["Procesos Afectivo-Emocionales", "Motivación y Emoción"] },
   { nombre: "Procesos Cognitivos", ciclo: 3, creditos: 3, desbloquea: [] },
   { nombre: "Inglés", ciclo: 3, creditos: 2, desbloquea: [] },
   { nombre: "Estadística Aplicada a la Psicología", ciclo: 3, creditos: 3, desbloquea: ["Psicometría"] },
@@ -33,7 +32,7 @@ const materias = [
   { nombre: "Psicometría", ciclo: 4, creditos: 4, desbloquea: ["Pruebas Psicológicas 1", "Metodología de la Investigación para Psicología"] },
   { nombre: "Psicología Social", ciclo: 4, creditos: 3, desbloquea: ["Psicología de las Organizaciones", "Dinámica y Abordaje de Grupos"] },
   { nombre: "Psicoanálisis", ciclo: 4, creditos: 3, desbloquea: ["Modelo Psicoterapéutico Humanista"] },
-  { nombre: "Procesos Afectivos-Emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
+  { nombre: "Procesos Afectivo-Emocionales", ciclo: 4, creditos: 3, desbloquea: [] },
   { nombre: "Motivación y Emoción", ciclo: 4, creditos: 3, desbloquea: ["Psicopatología 1", "Psicología del Aprendizaje"] },
   { nombre: "Desarrollo Psicológico 2", ciclo: 4, creditos: 3, desbloquea: ["Entrevista y Observación Psicológica"] },
 
@@ -58,7 +57,7 @@ const materias = [
   { nombre: "Psicología Comunitaria y Ambiental", ciclo: 7, creditos: 3, desbloquea: ["Programa de Internado Aplicado a Psicología"] },
   { nombre: "Neuropsicología", ciclo: 7, creditos: 4, desbloquea: [] },
   { nombre: "Modelo Psicoterapéutico Cognitivo - Conductual", ciclo: 7, creditos: 3, desbloquea: [] },
-  { nombre: "Evaluación y Diagnóstico Psicológico", ciclo: 7, creditos: 3, desbloquea: ["Orientación Vocacional y Profesional", "Modelo Psicoterapéutico Familiar Sistémico", "Integrity and Professional Ethical"] },
+  { nombre: "Evaluación y Diagnóstico Psicológico", ciclo: 7, creditos: 3, desbloquea: ["Orientación Vocacional y Profesional", "Modelo Psicoterapéutico Familiar Sistémico", "Integridad y Ética Profesional"] },
   { nombre: "Comportamiento y Cultura Organizacional", ciclo: 7, creditos: 3, desbloquea: [] },
 
   // Ciclo 8
@@ -67,7 +66,7 @@ const materias = [
   { nombre: "Orientación Vocacional y Profesional", ciclo: 8, creditos: 2, desbloquea: [] },
   { nombre: "Modelo Psicoterapéutico Familiar Sistémico", ciclo: 8, creditos: 3, desbloquea: [] },
   { nombre: "Metodología de la Investigación para Psicología", ciclo: 8, creditos: 3, desbloquea: ["Seminario de Tesis"] },
-  { nombre: "Integrity and Professional Ethical", ciclo: 8, creditos: 3, desbloquea: ["Internado 1"] },
+  { nombre: "Integridad y Ética Profesional", ciclo: 8, creditos: 3, desbloquea: ["Internado 1"] },
 
   // Ciclo 9
   { nombre: "Seminario de Tesis", ciclo: 9, creditos: 3, desbloquea: ["Trabajo de Investigación"] },
@@ -78,68 +77,90 @@ const materias = [
   { nombre: "Internado 2", ciclo: 10, creditos: 15, desbloquea: [] }
 ];
 
-let estado = JSON.parse(localStorage.getItem("estadoMaterias")) || {};
+// Iconos por palabra clave
+const iconos = [
+  { palabra: "Psicología", icono: "fa-brain" },
+  { palabra: "Neuro", icono: "fa-brain" },
+  { palabra: "Aprendizaje", icono: "fa-lightbulb" },
+  { palabra: "Emoción", icono: "fa-heart" },
+  { palabra: "Salud", icono: "fa-heart-pulse" },
+  { palabra: "Estadística", icono: "fa-chart-bar" },
+  { palabra: "Desarrollo", icono: "fa-user" },
+  { palabra: "Sexualidad", icono: "fa-heart" },
+  { palabra: "Internado", icono: "fa-graduation-cap" },
+  { palabra: "Investigación", icono: "fa-book-open" },
+  { palabra: "Taller", icono: "fa-people-arrows" },
+  { palabra: "Entrevista", icono: "fa-comments" },
+  { palabra: "Consejo", icono: "fa-hands-helping" },
+  { palabra: "Organizaciones", icono: "fa-building" },
+  { palabra: "Metodología", icono: "fa-book" }
+];
 
-function guardarEstado() {
-  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
+const estado = {};
+
+function getIcono(nombre) {
+  for (const i of iconos) {
+    if (nombre.toLowerCase().includes(i.palabra.toLowerCase())) return i.icono;
+  }
+  return "fa-book";
 }
 
 function estaDesbloqueada(materia) {
-  if (materia.ciclo === 1) return true; // solo ciclo 1 se desbloquea de inicio
   const prerrequisitos = materias.filter(m => m.desbloquea.includes(materia.nombre));
+  if (prerrequisitos.length === 0) {
+    return materia.ciclo === 1;
+  }
   return prerrequisitos.every(m => estado[m.nombre] === "completado");
 }
 
 function renderMalla() {
-  const contenedor = document.getElementById("malla-container");
-  contenedor.innerHTML = "";
+  const container = document.getElementById("malla-container");
+  container.innerHTML = "";
+  const ciclosUnicos = [...new Set(materias.map(m => m.ciclo))];
+  ciclosUnicos.forEach(ciclo => {
+    const divCiclo = document.createElement("div");
+    divCiclo.className = "ciclo";
+    divCiclo.innerHTML = `<h3>Ciclo ${ciclo}</h3>`;
+    const divMaterias = document.createElement("div");
+    divMaterias.className = "materias";
 
-  const ciclos = [...new Set(materias.map(m => m.ciclo))].sort((a, b) => a - b);
+    materias
+      .filter(m => m.ciclo === ciclo)
+      .forEach(m => {
+        const materiaDiv = document.createElement("div");
+        materiaDiv.className = "materia";
+        const desbloqueada = estaDesbloqueada(m);
 
-  ciclos.forEach(ciclo => {
-    const seccion = document.createElement("div");
-    seccion.className = "ciclo";
-
-    const titulo = document.createElement("h3");
-    titulo.textContent = `Ciclo ${ciclo}`;
-    seccion.appendChild(titulo);
-
-    const grupo = document.createElement("div");
-    grupo.className = "materias";
-
-    materias.filter(m => m.ciclo === ciclo).forEach(materia => {
-      const tarjeta = document.createElement("div");
-      tarjeta.className = "materia";
-
-      if (!estaDesbloqueada(materia)) {
-        tarjeta.classList.add("locked");
-      }
-
-      if (estado[materia.nombre] === "completado") {
-        tarjeta.classList.add("completed");
-      }
-
-      tarjeta.innerHTML = `${materia.nombre}<small>${materia.creditos} créditos</small>`;
-
-      tarjeta.onclick = () => {
-        if (tarjeta.classList.contains("locked")) return;
-
-        if (estado[materia.nombre] === "completado") {
-          delete estado[materia.nombre];
-        } else {
-          estado[materia.nombre] = "completado";
+        if (!desbloqueada) {
+          materiaDiv.classList.add("locked");
+        } else if (estado[m.nombre] === "completado") {
+          materiaDiv.classList.add("completed");
         }
 
-        guardarEstado();
-        renderMalla();
-      };
+        const iconClass = getIcono(m.nombre);
+        materiaDiv.innerHTML = `<i class="fas ${iconClass}"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
+        materiaDiv.onclick = () => {
+          if (!materiaDiv.classList.contains("locked")) {
+            estado[m.nombre] = estado[m.nombre] === "completado" ? null : "completado";
+            renderMalla();
+          }
+        };
+        divMaterias.appendChild(materiaDiv);
+      });
 
-      grupo.appendChild(tarjeta);
-    });
-
-    seccion.appendChild(grupo);
-    contenedor.appendChild(seccion);
+    divCiclo.appendChild(divMaterias);
+    container.appendChild(divCiclo);
   });
+
+  actualizarBarra();
+}
+
+function actualizarBarra() {
+  const total = materias.filter(m => estaDesbloqueada(m)).length;
+  const completadas = materias.filter(m => estado[m.nombre] === "completado").length;
+  const porcentaje = total > 0 ? Math.round((completadas / total) * 100) : 0;
+  document.getElementById("progreso-interno").style.width = `${porcentaje}%`;
+  document.getElementById("porcentaje").innerText = `${porcentaje}%`;
 }
 
 renderMalla();
