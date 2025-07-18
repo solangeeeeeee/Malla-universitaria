@@ -98,10 +98,11 @@ function crearMateria(m) {
     div.classList.add("locked");
   } else {
     div.addEventListener("click", () => {
-      const yaCompleto = div.classList.toggle("completed");
-      estado[m.nombre] = yaCompleto ? "completado" : null;
-      actualizarDesbloqueo();
-    });
+  const yaCompleto = div.classList.toggle("completed");
+  estado[m.nombre] = yaCompleto ? "completado" : null;
+  guardarEstado();
+  actualizarDesbloqueo();
+});
   }
 
   return div;
@@ -138,4 +139,21 @@ function actualizarDesbloqueo() {
   document.getElementById("porcentaje").textContent = porcentaje + "%";
 }
 
-document.addEventListener("DOMContentLoaded", actualizarDesbloqueo);
+document.addEventListener("DOMContentLoaded", () => {
+  cargarEstado();
+  actualizarDesbloqueo();
+});
+
+function guardarEstado() {
+  localStorage.setItem("estadoMaterias", JSON.stringify(estado));
+}
+
+function cargarEstado() {
+  const guardado = localStorage.getItem("estadoMaterias");
+  if (guardado) {
+    const datos = JSON.parse(guardado);
+    Object.keys(datos).forEach(nombre => {
+      estado[nombre] = datos[nombre];
+    });
+  }
+}
