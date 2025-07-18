@@ -153,3 +153,8 @@ h2 {
   color: #a24b72;
   font-weight: 500;
 }
+
+.materia.completed .nombre {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
