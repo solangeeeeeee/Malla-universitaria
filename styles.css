@@ -64,12 +64,12 @@ h2 {
 }
 
 .materia.locked {
-  background-color: #e4dcfa; /* lila bebé (bloqueada) */
-  border-color: #c6b3f3;
-  color: #777;
+  background-color: #fef1f5; /* rosado muy clarito */
+  border-color: #f4c8d9;
+  color: #aaa;
   cursor: default;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .materia.completed {
