@@ -70,7 +70,7 @@ function estaDesbloqueada(materia) {
 function crearMateria(m) {
   const div = document.createElement("div");
   div.className = "materia";
-  div.innerHTML = `<i class="fas fa-brain"></i>${m.nombre}<small>${m.creditos} créditos</small>`;
+  div.innerHTML = `<i class="fas fa-brain"></i><span class="nombre">${m.nombre}</span><small>${m.creditos} créditos</small>`;
   if (!estaDesbloqueada(m)) {
     div.classList.add("locked");
   } else {
