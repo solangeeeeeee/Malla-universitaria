@@ -110,9 +110,9 @@ h2 {
 
 /* Materia completada */
 .materia.completed {
-  background-color: #f8a7c2;
-  border-color: #e07ea7;
-  color: #6c2a48;
+  background-color: #FADADD; /* rosado pastel */
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 .materia.completed i {
